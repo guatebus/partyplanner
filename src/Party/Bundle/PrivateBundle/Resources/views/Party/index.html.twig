@@ -1,0 +1,48 @@
+{% extends 'PartyPrivateBundle::base.html.twig' %}
+
+{% block title %}{{ 'party.index_title'|trans }}{% endblock %}
+
+{% block content %}
+
+    <h1>{{ 'party.index_title'|trans }}</h1>
+
+    <div class="pull-right" style="margin-right: 10px">
+        <a class="btn btn-success" href="{{ path('party_new') }}">
+            {{ 'party.create_action'|trans }}
+        </a>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th style="width:35%">{{ 'party.name'|trans }}</th>
+                <th style="width:25%">{{ 'party.location'|trans }}</th>
+                <th style="width:20%">{{ 'party.date'|trans }}</th>
+                <th style="width:20%"></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for entity in entities if entities|length %}
+                <tr>
+                    <td>{{ entity.name }}</td>
+                    <td>{{ entity.location }}</td>
+                    <td>{% if entity.date %}{{ entity.date|date('Y-m-d') }}{% endif %}</td>
+                    <td>
+                        <a class="btn" href="{{ path('party_show', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-eye-open"></span></a>
+                        <a class="btn" href="{{ path('party_edit', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-pencil"></span></a>
+                        <a class="btn" data-action="show_remove_modal" data-url="{{ path('party_remove', {id:entity.id}) }}"><span class="glyphicon glyphicon-remove"></span></a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr class="danger">
+                    <td colspan="4">{{ 'common.no_results_results'|trans }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    {#{% include 'PartyPrivateBundle:Common:modal.html.twig' with {'modal_id': 'remove_modal'}%}#}
+
+{% endblock %}

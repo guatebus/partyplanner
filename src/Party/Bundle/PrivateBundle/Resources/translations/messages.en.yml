@@ -1,0 +1,22 @@
+name_site: Partyplanner
+
+menu:
+    party_index: Party List
+
+party:
+    index_title: Party List
+    name: Name
+    location: Location
+    date: Date
+    create_action: Create new party
+    attendees: Attendees
+    attendee_name: Attendee Name
+    attendee_email: Attendee Email
+
+common:
+    message:
+        confirm_delete: Confirm delete
+        close: Close
+
+login:
+    logout: Logout

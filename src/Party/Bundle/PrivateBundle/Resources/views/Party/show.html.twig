@@ -1,0 +1,43 @@
+{% extends 'PartyPrivateBundle::base.html.twig' %}
+
+{% block title %}{{ 'party.show_title'|trans }}{% endblock %}
+
+{% block content %}
+
+    <div class="page-header">
+        <h1>{{ entity.name}}</h1>
+    </div>
+
+    <div class="pull-right" style="margin-right: 10px">
+        <a class="btn" data-action="show_remove_modal" data-url="{{ path('party_remove', {id:entity.id}) }}"><span class="glyphicon glyphicon-remove"></span></a>
+    </div>
+
+    <div>
+        <h3>{{ 'party.attendees'|trans }}</h3>
+    </div>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th style="width:50%">{{ 'party.attendee_name'|trans }}</th>
+                <th style="width:50%">{{ 'party.attendee_email'|trans }}</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for attendee in entity.attendees if entity.attendees|length %}
+                <tr>
+                    <td>{{ attendee.name }}</td>
+                    <td>{{ attendee.email }}</td>
+            {% else %}
+                <tr class="danger">
+                    <td colspan="4">{{ 'common.no_results_results'|trans }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    {#{% include 'PartyPrivateBundle:Common:modal.html.twig' with {'modal_id': 'remove_modal'}%}#}
+
+{% endblock %}

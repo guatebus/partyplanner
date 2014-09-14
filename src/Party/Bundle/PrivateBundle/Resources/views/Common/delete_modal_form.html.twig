@@ -1,0 +1,19 @@
+{% set message = message is defined ?  message|trans : 'common.message.confirm_delete'|trans %}
+
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header modal-remove-header">
+            <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            <h4 class="modal-title">{{ 'common.delete_modal.title'|trans }}</h4>
+        </div>
+        <div class="modal-body">
+            {{ message }}
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">{{ 'common.delete_modal.close'|trans }}</button>
+            <div style="display: inline-block;">
+                {{ form(delete_form) }}
+            </div>
+        </div>
+    </div>
+</div>

@@ -33,14 +33,14 @@ twig:
 assetic:
     debug:          "%kernel.debug%"
     use_controller: false
-    bundles:        [ ]
-    #java: /usr/bin/java
+    bundles:        ["PartyPrivateBundle", "PartyPublicBundle"]
     filters:
         cssrewrite: ~
-        #closure:
-        #    jar: "%kernel.root_dir%/Resources/java/compiler.jar"
-        #yui_css:
-        #    jar: "%kernel.root_dir%/Resources/java/yuicompressor-2.4.7.jar"
+    assets:
+        jquery_map:
+            inputs:
+                @PartyPrivateBundle/Resources/public/vendor/jquery/jquery.min.map
+            output: js/jquery.min.map
 
 # Doctrine Configuration
 doctrine:

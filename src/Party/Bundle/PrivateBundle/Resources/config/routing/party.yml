@@ -1,0 +1,35 @@
+party:
+    path:     /
+    defaults: { _controller: "PartyPrivateBundle:Party:index" }
+
+party_show:
+    path:     /{id}/show
+    defaults: { _controller: "PartyPrivateBundle:Party:show" }
+
+party_new:
+    path:     /new
+    defaults: { _controller: "PartyPrivateBundle:Party:new" }
+
+party_create:
+    path:     /create
+    defaults: { _controller: "PartyPrivateBundle:Party:create" }
+    requirements: { _method: post }
+
+party_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "PartyPrivateBundle:Party:edit" }
+
+party_update:
+    path:     /{id}/update
+    defaults: { _controller: "PartyPrivateBundle:Party:update" }
+    requirements: { _method: post|put }
+
+party_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "PartyPrivateBundle:Party:delete" }
+    requirements: { _method: post|delete }
+
+party_remove:
+    path:     /{id}/remove
+    defaults: { _controller: "PartyPrivateBundle:Party:remove" }
+    requirements: { _method: get }
