@@ -1,0 +1,8 @@
+party_public:
+    resource: "@PartyPublicBundle/Resources/config/routing.yml"
+    prefix:   /
+
+party_private:
+    resource: "@PartyPrivateBundle/Resources/config/routing.yml"
+    prefix:   /
+
