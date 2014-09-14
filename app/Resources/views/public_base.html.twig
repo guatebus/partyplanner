@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}{% endblock %} | Partyplanner</title>
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    {% block stylesheets %}
+        {% stylesheets
+        'bundles/partyprivate/vendor/jquery/jquery-ui/jquery-ui.min.css'
+        'bundles/partyprivate/vendor/bootstrap/css/bootstrap.min.css'
+        'bundles/finfrontend/css/*'
+        filter='cssrewrite' output="css/styles.css" %}
+        <link rel="stylesheet" href="{{ asset_url }}" />
+        {% endstylesheets %}
+    {% endblock %}
+</head>
+
+<body>
+{% block body %}{% endblock %}
+</body>
+</html>

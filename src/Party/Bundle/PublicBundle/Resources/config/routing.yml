@@ -1,3 +1,12 @@
 public_index:
     path:     /
     defaults: { _controller: PartyPublicBundle:Home:index }
+
+attendee_new:
+    path:     /new
+    defaults: { _controller: PartyPublicBundle:Home:new }
+
+attendee_create:
+    path:     /create
+    defaults: { _controller: PartyPublicBundle:Home:create }
+    requirements: { _method: post }

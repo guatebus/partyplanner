@@ -1,0 +1,11 @@
+{% extends 'PartyPublicBundle::base.html.twig' %}
+
+{% block title %}{{ 'Attend Party!' }}{% endblock %}
+
+{% block content %}
+    <h1>{{ 'Attend Party!' }}</h1>
+
+    {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+    {{ form_end(form) }}
+
+{% endblock %}

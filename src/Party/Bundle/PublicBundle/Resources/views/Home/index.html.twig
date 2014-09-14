@@ -1,0 +1,40 @@
+{% extends 'PartyPublicBundle::base.html.twig' %}
+
+{% block title %}{{ "Parties!" }}{% endblock %}
+
+{% block content %}
+
+    <h1>{{ "Parties!" }}</h1>
+
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+            <tr>
+                <th style="width:35%">{{ 'party.name'|trans }}</th>
+                <th style="width:25%">{{ 'party.location'|trans }}</th>
+                <th style="width:20%">{{ 'party.date'|trans }}</th>
+                <th style="width:10%">{{ 'Attendee Count' }}</th>
+                <th style="width:10%"></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for entity in entities if entities|length %}
+                <tr>
+                    <td>{{ entity.name }}</td>
+                    <td>{{ entity.location }}</td>
+                    <td>{% if entity.date %}{{ entity.date|date('Y-m-d') }}{% endif %}</td>
+                    <td>{{ entity.attendees|length }}</td>
+                    <td>
+                        <a class="btn" href="{{ path('attendee_new', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-check"></span></a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr class="danger">
+                    <td colspan="4">{{ 'common.no_results_results'|trans }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock %}

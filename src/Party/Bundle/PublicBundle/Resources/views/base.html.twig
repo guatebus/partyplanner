@@ -1,0 +1,31 @@
+{% extends '::public_base.html.twig' %}
+
+{% block body %}
+
+    <div class="container">
+
+        {% for flashMessage in app.session.flashbag.get('flashMessage') %}
+            <div class="alert alert-{{ flashMessage.state }}" role="alert">{{ flashMessage.message|trans }}</div>
+        {% endfor %}
+
+        {% block content %}{% endblock %}
+    </div>
+
+    {% block footer %}
+        <footer>
+            {% include 'PartyPrivateBundle:Common:footer.html.twig' %}
+        </footer>
+    {% endblock %}
+
+    {% block javascripts %}
+        {% javascripts
+        '@PartyPrivateBundle/Resources/public/vendor/jquery/jquery.min.js'
+        '@PartyPrivateBundle/Resources/public/vendor/jquery/jquery-ui/jquery-ui.min.js'
+        '@PartyPrivateBundle/Resources/public/vendor/bootstrap/js/bootstrap.min.js'
+        '@PartyPrivateBundle/Resources/public/js/app.js'
+        %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+    {% endblock %}
+
+{% endblock %}
