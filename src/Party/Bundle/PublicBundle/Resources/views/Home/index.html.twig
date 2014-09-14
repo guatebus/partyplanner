@@ -25,7 +25,7 @@
                     <td>{% if entity.date %}{{ entity.date|date('Y-m-d') }}{% endif %}</td>
                     <td>{{ entity.attendees|length }}</td>
                     <td>
-                        <a class="btn" href="{{ path('attendee_new', { 'id': entity.id }) }}"><span class="glyphicon glyphicon-check"></span></a>
+                        <a class="btn" href="{{ path('attendee_new', { 'partyId': entity.id }) }}"><span class="glyphicon glyphicon-check"></span></a>
                     </td>
                 </tr>
             {% else %}

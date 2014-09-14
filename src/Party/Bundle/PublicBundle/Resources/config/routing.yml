@@ -3,10 +3,10 @@ public_index:
     defaults: { _controller: PartyPublicBundle:Home:index }
 
 attendee_new:
-    path:     /new
+    pattern: /{partyId}/rsvp
     defaults: { _controller: PartyPublicBundle:Home:new }
 
 attendee_create:
-    path:     /create
-    defaults: { _controller: PartyPublicBundle:Home:create }
+    path:     /{partyId}/create
+    defaults: { _controller: PartyPublicBundle:Home:create, partyId: null }
     requirements: { _method: post }

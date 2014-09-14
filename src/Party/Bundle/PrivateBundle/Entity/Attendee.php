@@ -98,7 +98,7 @@ class Attendee
      * Add party
      *
      * @param  \Party\Bundle\PrivateBundle\Entity\Party $party
-     * @return Tag
+     * @return Attendee
      */
     public function addParty(\Party\Bundle\PrivateBundle\Entity\Party $party)
     {
@@ -117,6 +117,24 @@ class Attendee
     public function removeParty(\Party\Bundle\PrivateBundle\Entity\Party $party)
     {
         $this->parties->removeElement($party);
+    }
+
+
+    /**
+     * Searches parties collection for $party
+     *
+     * @param \Party\Bundle\PrivateBundle\Entity\Party $party
+     * @return boolean
+     */
+    public function isAttending(\Party\Bundle\PrivateBundle\Entity\Party $party)
+    {
+        foreach($this->getParties() as $attending){
+            if ($party->getId() == $attending->getId()){
+
+                return true;
+            }
+        }
+        return false;
     }
 
     /**

@@ -24,39 +24,53 @@ class HomeController extends Controller
      * Creates a new Attendee entity.
      *
      */
-    public function createAction(Request $request)
+    public function createAction(Request $request, $partyId)
     {
-        $entity = new Attendee();
-        $form = $this->createCreateForm($entity);
+        $em = $this->getDoctrine()->getManager();
+
+        $party = $em->getRepository('PartyPrivateBundle:Party')->find($partyId);
+        if (!$party) {
+            throw $this->createNotFoundException('Unable to find Party entity.');
+        }
+
+        $form = $this->createCreateForm(new Attendee(), $partyId);
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
+        $entity = $form->getData();
 
-            $em = $this->getDoctrine()->getManager();
-            /*
-                        $party = $em->getRepository('PartyPrivateBundle:Party')->find($request->query->get('id'));
+        $previouslyExistent = $em->getRepository('PartyPrivateBundle:Attendee')->findOneBy(array('email' => $entity->getEmail()));
+        if ($previouslyExistent) {
+            $entity = $previouslyExistent;
+        }
 
-                        $enty->addParty($party);
+        if (!$entity->isAttending($party)){
+            if ($form->isValid()) {
+                $entity->addParty($party);
+                $em->persist($entity);
+                $em->flush();
 
-                        /*$previousAttendee = $em->getRepository('PartyPrivateBundle:Attendee')->findOneBy(array('email' => $form->getData()['email']));
+                $this->get('session')->getFlashBag()->add(
+                    'flashMessage',
+                    array('state' => 'success','message' => 'RSVP Confirmed!')
+                );
 
-                        if ($previousAttendee) {
-
-                        }*/
-
-            $em->persist($entity);
-            $em->flush();
+                return $this->redirect($this->generateUrl('public_index'));
+            }
+        }
+        else {
 
             $this->get('session')->getFlashBag()->add(
                 'flashMessage',
-                array('state' => 'success','message' => 'RSVP Confirmed!')
+                array('state' => 'success','message' => 'User with email '.$entity->getEmail().' already attending party!')
             );
 
             return $this->redirect($this->generateUrl('public_index'));
         }
 
+
         return $this->render('PartyPublicBundle:Attendee:new.html.twig', array(
                 'entity' => $entity,
+                'partyId' => $partyId,
                 'form'   => $form->createView(),
             ));
     }
@@ -68,10 +82,10 @@ class HomeController extends Controller
      *
      * @return \Symfony\Component\Form\Form The form
      */
-    private function createCreateForm(Attendee $entity)
+    private function createCreateForm(Attendee $entity, $partyId)
     {
         $form = $this->createForm(new AttendeeType(), $entity, array(
-                'action' => $this->generateUrl('attendee_create'),
+                'action' => $this->generateUrl('attendee_create', array('partyId' => $partyId)),
                 'method' => 'POST',
             ));
 
@@ -84,13 +98,21 @@ class HomeController extends Controller
      * Displays a form to create a new Attendee entity.
      *
      */
-    public function newAction(Request $request)
+    public function newAction(Request $request, $partyId)
     {
+        $em = $this->getDoctrine()->getManager();
+        $party = $em->getRepository('PartyPrivateBundle:Party')->find($partyId);
+        if (!$party) {
+            throw $this->createNotFoundException('Unable to find Party entity.');
+        }
+
         $entity = new Attendee();
-        $form   = $this->createCreateForm($entity);
+        $form   = $this->createCreateForm($entity, $partyId);
+        $entity->addParty($party);
 
         return $this->render('PartyPublicBundle:Attendee:new.html.twig', array(
                 'entity' => $entity,
+                'partyId' => $partyId,
                 'form'   => $form->createView(),
             ));
     }

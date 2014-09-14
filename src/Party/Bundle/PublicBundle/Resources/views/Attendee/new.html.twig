@@ -5,7 +5,10 @@
 {% block content %}
     <h1>{{ 'Attend Party!' }}</h1>
 
-    {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
-    {{ form_end(form) }}
+    <form action="{{ path('attendee_create', { 'partyId' : partyId }) }}" method="POST" role="form">
+        {{ form_row(form.name)}}
+        {{ form_row(form.email)}}
+        {{ form_rest(form) }}
+    </form>
 
 {% endblock %}
