@@ -1,12 +1,14 @@
 {% extends 'PartyPrivateBundle::base.html.twig' %}
 
-{% block title %}{{ 'Edit Party' }}{% endblock %}
+{% set type = type ? type : '' %}
+
+{% block title %}{{ type ~ ' Party' }}{% endblock %}
 
 {% block content %}
-    <h1>{{ 'Edit Party'  }}</h1>
+    <h1>{{ type ~ ' Party' }}</h1>
 
-    {{ form_start(edit_form, {attr: {novalidate: 'novalidate'}}) }}
-    {{ form_end(edit_form) }}
+    {{ form_start(form, {attr: {novalidate: 'novalidate'}}) }}
+    {{ form_end(form) }}
 
 {% endblock %}
 

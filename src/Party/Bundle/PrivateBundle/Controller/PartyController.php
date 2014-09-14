@@ -52,8 +52,9 @@ class PartyController extends Controller
             return $this->redirect($this->generateUrl('party_show', array('id' => $entity->getId())));
         }
 
-        return $this->render('PartyPrivateBundle:Party:new.html.twig', array(
+        return $this->render('PartyPrivateBundle:Party:edit.html.twig', array(
             'entity' => $entity,
+            'type'      => 'Create',
             'form'   => $form->createView(),
         ));
     }
@@ -86,8 +87,9 @@ class PartyController extends Controller
         $entity = new Party();
         $form   = $this->createCreateForm($entity);
 
-        return $this->render('PartyPrivateBundle:Party:new.html.twig', array(
+        return $this->render('PartyPrivateBundle:Party:edit.html.twig', array(
             'entity' => $entity,
+            'type'      => 'Create',
             'form'   => $form->createView(),
         ));
     }
@@ -133,7 +135,8 @@ class PartyController extends Controller
 
         return $this->render('PartyPrivateBundle:Party:edit.html.twig', array(
             'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'type'      => 'Edit',
+            'form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }
@@ -187,7 +190,8 @@ class PartyController extends Controller
 
         return $this->render('PartyPrivateBundle:Party:edit.html.twig', array(
             'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
+            'type'      => 'Edit',
+            'form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
         ));
     }

@@ -20,6 +20,7 @@ common:
         confirm_delete: Confirm delete
         confirm_deletion_of: Confirm deletion of partyname
         close: Close
+    no_results_results: No attendees
 
 login:
     logout: Logout
