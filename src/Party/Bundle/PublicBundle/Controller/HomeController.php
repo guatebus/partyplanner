@@ -41,7 +41,7 @@ class HomeController extends Controller
                         /*$previousAttendee = $em->getRepository('PartyPrivateBundle:Attendee')->findOneBy(array('email' => $form->getData()['email']));
 
                         if ($previousAttendee) {
-            
+
                         }*/
 
             $em->persist($entity);
