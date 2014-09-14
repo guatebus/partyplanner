@@ -217,7 +217,10 @@ class PartyController extends Controller
         return $this->createFormBuilder()
             ->setAction($this->generateUrl('party_delete', array('id' => $id)))
             ->setMethod('DELETE')
-            ->add('submit', 'submit', array('label' => 'Delete'))
+            ->add('submit', 'submit', array(
+                'label' => 'common.message.confirm_delete',
+                'attr' => array('class' => 'btn btn-danger')
+                ))
             ->getForm()
         ;
     }
@@ -229,10 +232,16 @@ class PartyController extends Controller
      */
     public function removeAction($id)
     {
+        $entity = $this->getDoctrine()->getManager()->getRepository('PartyPrivateBundle:Party')->find($id);
+        if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Party entity.');
+        }
+
         $deleteForm = $this->createDeleteForm($id);
 
         return $this->render('PartyPrivateBundle:Common:delete_modal_form.html.twig', array(
-                'delete_form' => $deleteForm->createView()
+                'delete_form' => $deleteForm->createView(),
+                'message' => $this->get('translator')->trans('common.message.confirm_deletion_of', array('partyname' => $entity->getName())),
             ));
     }
 }

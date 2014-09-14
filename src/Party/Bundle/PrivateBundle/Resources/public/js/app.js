@@ -1,6 +1,6 @@
 var mySelf;
 
-$(function(){/*
+$(function(){
     $('[data-action="show_remove_modal"]').on('click',function(){
         mySelf = $(this);
         $('#remove_modal').modal('toggle');
@@ -15,7 +15,7 @@ $(function(){/*
             }
         });
     });
-
+ /*
     $('[data-action="show_attachment_modal"]').on('click',function(){
         mySelf = $(this);
         $('#remove_modal').modal('toggle');

@@ -26,9 +26,9 @@ Party\Bundle\PrivateBundle\Entity\Party:
                 joinColumns:
                     party_id:
                         referencedColumnName: id
-                        onDelete: RESTRICT
+                        onDelete: CASCADE
                 inverseJoinColumns:
                     attendee_id:
                         referencedColumnName: id
-                        onDelete: CASCADE
+                        onDelete: RESTRICT
     lifecycleCallbacks: {  }

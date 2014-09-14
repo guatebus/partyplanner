@@ -16,6 +16,7 @@ party:
 common:
     message:
         confirm_delete: Confirm delete
+        confirm_deletion_of: Confirm deletion of partyname
         close: Close
 
 login:
