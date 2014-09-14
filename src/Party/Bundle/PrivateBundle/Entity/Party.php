@@ -43,7 +43,6 @@ class Party
         $this->attendees = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-
     /**
      * Get id
      *
@@ -127,10 +126,10 @@ class Party
     /**
      * Add attendee
      *
-     * @param  \Party\Bundle\PrivateBundle\Entity\User $click
+     * @param  \Party\Bundle\PrivateBundle\Entity\Attendee $attendee
      * @return Banner
      */
-    public function addClick(\Party\Bundle\PrivateBundle\Entity\User $attendee)
+    public function addAttendee(\Party\Bundle\PrivateBundle\Entity\Attendee $attendee)
     {
         //$attendee->addParty($this);
 
@@ -142,9 +141,9 @@ class Party
     /**
      * Remove attendee
      *
-     * @param \Party\Bundle\PrivateBundle\Entity\User $attendee
+     * @param \Party\Bundle\PrivateBundle\Entity\Attendee $attendee
      */
-    public function removeClick(\Party\Bundle\PrivateBundle\Entity\User $attendee)
+    public function removeAttendee(\Party\Bundle\PrivateBundle\Entity\Attendee $attendee)
     {
         $this->attendees->removeElement($attendee);
     }

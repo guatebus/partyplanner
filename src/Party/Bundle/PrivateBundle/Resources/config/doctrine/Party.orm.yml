@@ -19,16 +19,16 @@ Party\Bundle\PrivateBundle\Entity\Party:
             type: date
     manyToMany:
         attendees:
-            targetEntity: User
+            targetEntity: Attendee
             cascade: ["persist"]
             joinTable:
-                name: pty_party_user
+                name: pty_party_attendee
                 joinColumns:
                     party_id:
                         referencedColumnName: id
                         onDelete: RESTRICT
                 inverseJoinColumns:
-                    user_id:
+                    attendee_id:
                         referencedColumnName: id
                         onDelete: CASCADE
     lifecycleCallbacks: {  }

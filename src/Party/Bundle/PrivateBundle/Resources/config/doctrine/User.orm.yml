@@ -7,8 +7,4 @@ Party\Bundle\PrivateBundle\Entity\User:
             id: true
             generator:
                 strategy: AUTO
-    manyToMany:
-        parties:
-            targetEntity: Party
-            mappedBy: attendees
     lifecycleCallbacks: {  }

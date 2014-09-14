@@ -1,0 +1,21 @@
+Party\Bundle\PrivateBundle\Entity\Attendee:
+    type: entity
+    table: pty_attendee
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        email:
+            type: string
+            length: 255
+    manyToMany:
+        parties:
+            targetEntity: Party
+            mappedBy: attendees
+    lifecycleCallbacks: {  }
