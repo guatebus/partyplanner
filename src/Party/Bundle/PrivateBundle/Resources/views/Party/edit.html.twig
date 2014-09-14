@@ -1,16 +1,21 @@
-{% extends '::base.html.twig' %}
+{% extends 'PartyPrivateBundle::base.html.twig' %}
 
-{% block body -%}
-    <h1>Party edit</h1>
+{% block title %}{{ 'Edit Party' }}{% endblock %}
 
-    {{ form(edit_form) }}
+{% block content %}
+    <h1>{{ 'Edit Party'  }}</h1>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('party') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>{{ form(delete_form) }}</li>
-</ul>
+    {{ form_start(edit_form, {attr: {novalidate: 'novalidate'}}) }}
+    {{ form_end(edit_form) }}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    {% include 'PartyPrivateBundle:Common:DatePicker/date_picker_js.html.twig' with {'selector':'#party_bundle_privatebundle_party_date'} %}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {% include 'PartyPrivateBundle:Common:DatePicker/date_picker_css.html.twig' with {'selector':'#party_bundle_privatebundle_party_date'} %}
 {% endblock %}

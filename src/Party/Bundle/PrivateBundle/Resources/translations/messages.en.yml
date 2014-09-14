@@ -12,6 +12,8 @@ party:
     attendees: Attendees
     attendee_name: Attendee Name
     attendee_email: Attendee Email
+    create_success: Party created successfully
+    edit_success: Party edited successfully
 
 common:
     message:

@@ -1,0 +1,13 @@
+{% javascripts
+    '@PartyPrivateBundle/Resources/public/vendor/moment/moment.min.js'
+    '@PartyPrivateBundle/Resources/public/vendor/bootstrap-datepicker/js/bootstrap-datetimepicker.min.js'
+%}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+{% endjavascripts %}
+<script>
+    $(function () {
+        $('{{ selector }}').datetimepicker({
+            pickTime: false
+        });
+    });
+</script>

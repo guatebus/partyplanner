@@ -17,8 +17,11 @@ class PartyType extends AbstractType
         $builder
             ->add('name')
             ->add('location')
-            ->add('date')
-            ->add('attendees')
+            ->add('date', 'date', array(
+                    'widget' => 'single_text',
+                    'format' => 'dd-MM-yyyy',
+                    'attr' => array('data-date-format' => 'DD-MM-YYYY')
+                ))
         ;
     }
     

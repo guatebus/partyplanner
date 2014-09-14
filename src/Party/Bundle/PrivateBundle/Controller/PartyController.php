@@ -44,6 +44,11 @@ class PartyController extends Controller
             $em->persist($entity);
             $em->flush();
 
+            $this->get('session')->getFlashBag()->add(
+                'flashMessage',
+                array('state' => 'success','message' => 'party.create_success')
+            );
+
             return $this->redirect($this->generateUrl('party_show', array('id' => $entity->getId())));
         }
 
@@ -172,7 +177,12 @@ class PartyController extends Controller
         if ($editForm->isValid()) {
             $em->flush();
 
-            return $this->redirect($this->generateUrl('party_edit', array('id' => $id)));
+            $this->get('session')->getFlashBag()->add(
+                'flashMessage',
+                array('state' => 'success','message' => 'party.edit_success')
+            );
+
+            return $this->redirect($this->generateUrl('party'));
         }
 
         return $this->render('PartyPrivateBundle:Party:edit.html.twig', array(
