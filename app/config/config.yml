@@ -4,7 +4,7 @@ imports:
 
 framework:
     #esi:             ~
-    #translator:      { fallback: "%locale%" }
+    translator:      ~
     secret:          "%secret%"
     router:
         resource: "%kernel.root_dir%/config/routing.yml"
@@ -67,3 +67,20 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+# Fos User
+fos_user:
+    db_driver: orm
+    firewall_name: main
+    user_class: Party\Bundle\PrivateBundle\Entity\User
+    from_email:
+        address:        noreply@partyplanner.com
+        sender_name:    Partyplanner
+#    registration:
+#        form:
+#            type: finuserbundle_user_registration
+#    service:
+#        mailer: fos_user.mailer.twig_swift
+#    resetting:
+#        email:
+#            template: FinUserBundle:Email:resetting.html.twig

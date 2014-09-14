@@ -1,6 +1,6 @@
 Party\Bundle\PrivateBundle\Entity\Party:
     type: entity
-    table: party
+    table: pty_party
     repositoryClass: Party\Bundle\PrivateBundle\Repository\PartyRepository
     id:
         id:
@@ -22,7 +22,7 @@ Party\Bundle\PrivateBundle\Entity\Party:
             targetEntity: User
             cascade: ["persist"]
             joinTable:
-                name: party_user
+                name: pty_party_user
                 joinColumns:
                     party_id:
                         referencedColumnName: id

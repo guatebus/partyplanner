@@ -1,6 +1,6 @@
 Party\Bundle\PrivateBundle\Entity\User:
     type: entity
-    table: user
+    table: pty_user
     id:
         id:
             type: integer
