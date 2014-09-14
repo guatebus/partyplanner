@@ -1,0 +1,34 @@
+Party\Bundle\PrivateBundle\Entity\Party:
+    type: entity
+    table: party
+    repositoryClass: Party\Bundle\PrivateBundle\Repository\PartyRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        location:
+            type: string
+            length: 255
+        date:
+            type: date
+    manyToMany:
+        attendees:
+            targetEntity: User
+            cascade: ["persist"]
+            joinTable:
+                name: party_user
+                joinColumns:
+                    party_id:
+                        referencedColumnName: id
+                        onDelete: RESTRICT
+                inverseJoinColumns:
+                    user_id:
+                        referencedColumnName: id
+                        onDelete: CASCADE
+    lifecycleCallbacks: {  }
