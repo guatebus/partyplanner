@@ -49,7 +49,7 @@ class PartyController extends Controller
                 array('state' => 'success','message' => 'party.create_success')
             );
 
-            return $this->redirect($this->generateUrl('party_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('party', array('id' => $entity->getId())));
         }
 
         return $this->render('PartyPrivateBundle:Party:edit.html.twig', array(
