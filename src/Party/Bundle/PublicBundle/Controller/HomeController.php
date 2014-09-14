@@ -67,7 +67,6 @@ class HomeController extends Controller
             return $this->redirect($this->generateUrl('public_index'));
         }
 
-
         return $this->render('PartyPublicBundle:Attendee:new.html.twig', array(
                 'entity' => $entity,
                 'partyId' => $partyId,

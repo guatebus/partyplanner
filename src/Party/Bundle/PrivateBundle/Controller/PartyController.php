@@ -29,6 +29,7 @@ class PartyController extends Controller
             'entities' => $entities,
         ));
     }
+
     /**
      * Creates a new Party entity.
      *
@@ -159,6 +160,7 @@ class PartyController extends Controller
 
         return $form;
     }
+
     /**
      * Edits an existing Party entity.
      *
@@ -195,6 +197,7 @@ class PartyController extends Controller
             'delete_form' => $deleteForm->createView(),
         ));
     }
+
     /**
      * Deletes a Party entity.
      *
