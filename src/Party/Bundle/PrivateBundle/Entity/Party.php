@@ -131,8 +131,6 @@ class Party
      */
     public function addAttendee(\Party\Bundle\PrivateBundle\Entity\Attendee $attendee)
     {
-        //$attendee->addParty($this);
-
         $this->attendees[] = $attendee;
 
         return $this;

@@ -97,11 +97,13 @@ class Attendee
     /**
      * Add party
      *
-     * @param  \ERunner\Bundle\FinBackEndBundle\Entity\Party $party
+     * @param  \Party\Bundle\PrivateBundle\Entity\Party $party
      * @return Tag
      */
-    public function addParty(\ERunner\Bundle\FinBackEndBundle\Entity\Party $party)
+    public function addParty(\Party\Bundle\PrivateBundle\Entity\Party $party)
     {
+        $party->addAttendee($this);
+
         $this->parties[] = $party;
 
         return $this;
@@ -110,9 +112,9 @@ class Attendee
     /**
      * Remove party
      *
-     * @param \ERunner\Bundle\FinBackEndBundle\Entity\Party $party
+     * @param \Party\Bundle\PrivateBundle\Entity\Party $party
      */
-    public function removeParty(\ERunner\Bundle\FinBackEndBundle\Entity\Party $party)
+    public function removeParty(\Party\Bundle\PrivateBundle\Entity\Party $party)
     {
         $this->parties->removeElement($party);
     }
